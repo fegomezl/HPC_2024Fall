@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <sys/time.h> 
 #include <pthread.h>
@@ -26,13 +27,13 @@ void *Pth_mmult (void *pid);
 
 int main(int argc, char* argv[])
 {
-	int i,j,k;
+	int i,j;
 	double totalSum;
 	
 	//INITIALIZE ARRAYS
-	for(i=0;i<NROW;i++)
+	for(i = 0; i < NROW; i++)
 	{
-		for(j=0;j<NCOL;j++)
+		for(j = 0; j < NCOL; j++)
 		{
 			inputArrayA[i][j]= i*NCOL+j;
 			inputArrayB[i][j]= j*NCOL+j;
@@ -40,19 +41,18 @@ int main(int argc, char* argv[])
 		}
 	}
 
-
 	//Get the start time
 	gettimeofday(&startTime, NULL); /* START TIME */
 
 	// Initialize threads
-	nproc = strtol (argv[1], NULL, 10);
+	nproc = strtol(argv[1], NULL, 10);
 	pthread_t* thread_handles;
 	thread_handles = malloc(nproc*sizeof(pthread_t));
-	long pid; 
+	long pid;
 
 	// Run parallel code
 	for (pid = 0; pid < nproc; pid++)
-		pthread_create(&thread_handles[thread], NULL, Pth_mmult, (void *) pid);
+		pthread_create(&thread_handles[pid], NULL, Pth_mmult, (void *) pid);
 
 	// Finish thread environment
 	for (pid = 0; pid < nproc; pid++)
@@ -98,7 +98,7 @@ int partition_index(long N, long pid){
 
 	if (pid < reminder){
 		return (ratio+1)*pid;
-	} elif (pid < nproc) { 
+	} else if (pid < nproc) { 
 		return ratio*pid + reminder;
 	} else {
 		return nproc;
@@ -107,8 +107,7 @@ int partition_index(long N, long pid){
 
 void *Pth_mmult(void *pid){
 	long my_pid = (long) pid;
-	int i, j;
-	int row_chunck = NROW/nproc;
+	int i, j, k;
 	
 	int my_first_row = partition_index(NROW, my_pid);
 	int my_last_row = partition_index(NROW, my_pid+1);
