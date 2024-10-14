@@ -20,6 +20,7 @@ struct timeval startTime;
 struct timeval finishTime;
 double timeIntervalLength;
 
+int nproc;
 void *Pth_rect (void *pid);
 
 int main(int argc, char* argv[]){
@@ -40,9 +41,9 @@ int main(int argc, char* argv[]){
 	semaphores = malloc(nproc*sizeof(sem_t));
 	long pid;
 
-	for (pid ii = 0; pid < nproc; ii++){
-		local_area[ii] = 0.0;
-		sem_init(&semaphores[ii], 0, 0);
+	for (pid = 0; pid < nproc; pid++){
+		local_area[pid] = 0.0;
+		sem_init(&semaphores[pid], 0, 0);
 	}
 
 	// Run parallel code
@@ -91,25 +92,26 @@ void *Pth_rect(void *pid){
 
 	double h = (double)(P_END-P_START)/NSTEPS;
 	
+	int i;
 	int my_first_item = partition_index(NSTEPS, my_pid);
 	int my_last_item = partition_index(NSTEPS, my_pid+1);
 
-	for (int i = my_first_item; i < my_last_item; i++){
+	for (i = my_first_item; i < my_last_item; i++){
 		local_area[my_pid] += cos(P_START+(i+0.5)*h)*h;
 	}
 
-	int local_site, new_pid;
-	for (int stride = 1; stride < n; stride *= 2){
+	int stride, local_site, new_pid;
+	for (stride = 1; stride < nproc; stride *= 2){
 		local_site = my_pid%(2*stride);
-		if (local_site = stride){
+		if (local_site == 0){
+			new_pid = my_pid + stride;
+			if (new_pid < nproc){
+				sem_wait(&semaphores[my_pid]);
+			}
+		} else if (local_site == stride){
 			new_pid = my_pid-stride;
 			local_area[new_pid] += local_area[my_pid];
 			sem_post(&semaphores[new_pid]);
-		} else if (local_site == 0){
-			new_pid = my_pid + stride;
-			if (new_pid < nproc){
-				sem_wait(&semaphores[new_pid]);
-			}
 		} 
 	}
 

@@ -108,13 +108,14 @@ int partition_index(long N, long pid){
 void *Pth_mmult(void *pid){
 	long my_pid = (long) pid;
 	
+	int i,j,k;
 	int my_first_row = partition_index(NROW, my_pid);
 	int my_last_row = partition_index(NROW, my_pid+1);
 	
-	for (int i = my_first_row; i < my_last_row; i++){
-		for(int j = 0; j < NCOL; j++){
-			for(int k = 0; k < NROW; k++){
-				outputArrayC[i][j] += inputArrayA[i][k]*inputArrayB[k][j];
+	for (i = my_first_row; i < my_last_row; i++){
+		for(j = 0; j < NCOL; j++){
+			for(k = 0; k < NROW; k++){
+				outputArrayC[i][j] += inputArrayA[i][k]*inputArrayB[k][j]*2;
 			}
 		}
 	}
