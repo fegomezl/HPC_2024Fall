@@ -169,19 +169,15 @@ void *Pth_rk(void *pid){
 		}
 
 		yout[i] = y[i] + (k1[i] + 3*k2[i] + 3*k3[i] + k4[i])/8.0;
-		local_sum[i] += yout[i];
+		localSum[my_pid] += yout[i];
 	}
-
-	pthread_mutex_lock(&barrier_mutex);
-	totalSum += local_sum;
-	pthread_mutex_unlock(&barrier_mutex);
 	
 	int stride, local_site, new_pid;
 	for (stride = 1; stride < nproc; stride *= 2){
 		local_site = my_pid%(2*stride);
 		if (local_site == stride){
 			new_pid = my_pid-stride;
-			local_sum[new_pid] += local_sum[my_pid];
+			localSum[new_pid] += localSum[my_pid];
 			sem_post(&semaphores[new_pid]);
 		} else if (local_site == 0){
 			new_pid = my_pid + stride;
@@ -192,7 +188,7 @@ void *Pth_rk(void *pid){
 	}
 
 	if (my_pid == 0)
-		totalSum = local_sum[my_pid];
+		totalSum = localSum[my_pid];
 	
 	return NULL;
 } 
