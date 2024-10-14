@@ -53,9 +53,9 @@ int main(int argc, char* argv[]){
 	// Finish thread environment
 	for (pid = 0; pid < nproc; pid++)
 		pthread_join(thread_handles[pid] , NULL);
-	free(thread_handles);
 	free(local_area);
 	free(semaphores);
+	free(thread_handles);
 
 	//Get the end time
 	gettimeofday(&finishTime, NULL);  /* after time */
