@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 		{
 			for(k=0;k<NROW;k++)
 			{
-				outputArrayC[i][j]+=inputArrayA[i][k]*inputArrayB[k][j];
+				outputArrayC[i][j]+=inputArrayA[i][k]*inputArrayB[k][j]*2;
 			}
 		}
 	}
