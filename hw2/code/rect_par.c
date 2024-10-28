@@ -6,15 +6,14 @@
 #include <pthread.h>
 #include <semaphore.h>
 
-#define		NSTEPS	8388600
-#define		NITER 	8388600
+#define		NSTEPS	1000000000
+#define		NITER 	1000000000
 #define		P_START	0 
 #define		P_END	10 
 
 // Area under the curve
 double area;
-double *local_area;
-sem_t *semaphores;
+pthread_mutex_t barrier_mutex;
 
 struct timeval startTime;
 struct timeval finishTime;
@@ -37,14 +36,9 @@ int main(int argc, char* argv[]){
 	nproc = strtol(argv[1], NULL, 10);
 	pthread_t* thread_handles;
 	thread_handles = malloc(nproc*sizeof(pthread_t));
-	local_area = malloc(nproc*sizeof(double));
-	semaphores = malloc(nproc*sizeof(sem_t));
 	long pid;
 
-	for (pid = 0; pid < nproc; pid++){
-		local_area[pid] = 0.0;
-		sem_init(&semaphores[pid], 0, 0);
-	}
+	pthread_mutex_init(&barrier_mutex, NULL);
 
 	// Run parallel code
 	for (pid = 0; pid < nproc; pid++)
@@ -53,8 +47,6 @@ int main(int argc, char* argv[]){
 	// Finish thread environment
 	for (pid = 0; pid < nproc; pid++)
 		pthread_join(thread_handles[pid] , NULL);
-	free(local_area);
-	free(semaphores);
 	free(thread_handles);
 
 	//Get the end time
@@ -96,27 +88,14 @@ void *Pth_rect(void *pid){
 	int my_first_item = partition_index(NSTEPS, my_pid);
 	int my_last_item = partition_index(NSTEPS, my_pid+1);
 
+    double local_area=0.0;
 	for (i = my_first_item; i < my_last_item; i++){
-		local_area[my_pid] += cos(P_START+(i+0.5)*h)*h;
+        local_area += cos(P_START+(i+0.5)*h)*h;
 	}
 
-	int stride, local_site, new_pid;
-	for (stride = 1; stride < nproc; stride *= 2){
-		local_site = my_pid%(2*stride);
-		if (local_site == 0){
-			new_pid = my_pid + stride;
-			if (new_pid < nproc){
-				sem_wait(&semaphores[my_pid]);
-			}
-		} else if (local_site == stride){
-			new_pid = my_pid-stride;
-			local_area[new_pid] += local_area[my_pid];
-			sem_post(&semaphores[new_pid]);
-		} 
-	}
-
-	if (my_pid == 0)
-		area = local_area[my_pid];
+	pthread_mutex_lock(&barrier_mutex);
+    area += local_area; 
+	pthread_mutex_unlock(&barrier_mutex);
 	
 	return NULL;
 } 

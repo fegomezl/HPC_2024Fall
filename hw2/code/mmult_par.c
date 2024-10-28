@@ -4,7 +4,7 @@
 #include <sys/time.h> 
 #include <pthread.h>
 
-#define		NROW	1024
+#define		NROW	8192
 #define		NCOL	NROW
 
 
@@ -22,7 +22,9 @@ struct timeval startTime;
 struct timeval finishTime;
 double timeIntervalLength;
 
+// Total number of threads
 int nproc;
+// Function for each thread to run
 void *Pth_mmult (void *pid);
 
 int main(int argc, char* argv[])
@@ -44,7 +46,7 @@ int main(int argc, char* argv[])
 	//Get the start time
 	gettimeofday(&startTime, NULL); /* START TIME */
 
-	// Initialize threads
+	// Initialize pthreads variables
 	nproc = strtol(argv[1], NULL, 10);
 	pthread_t* thread_handles;
 	thread_handles = malloc(nproc*sizeof(pthread_t));
@@ -61,8 +63,6 @@ int main(int argc, char* argv[])
 	
 	//Get the end time
 	gettimeofday(&finishTime, NULL);  /* END TIME */
-	
-
 
 	#ifdef TEST_RESULTS
 		//CALCULATE TOTAL SUM 
@@ -115,7 +115,7 @@ void *Pth_mmult(void *pid){
 	for (i = my_first_row; i < my_last_row; i++){
 		for(j = 0; j < NCOL; j++){
 			for(k = 0; k < NROW; k++){
-				outputArrayC[i][j] += inputArrayA[i][k]*inputArrayB[k][j]*2;
+				outputArrayC[i][j] += inputArrayA[i][k]*inputArrayB[k][j];
 			}
 		}
 	}

@@ -1,0 +1,372 @@
+1
+
+Total Sum = 8.44459e+14
+Interval length: 22499 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 23514.5 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 23895 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 23826 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 24853.1 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 23794.6 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 24395.6 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 21808.4 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 22222.8 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 23707.3 msec.
+2
+
+Total Sum = 8.44459e+14
+Interval length: 13389.8 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 12547.1 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 13101.8 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 13695.9 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 13621.1 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 12970.3 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 13401 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 12676.7 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 13685.7 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 13556.9 msec.
+3
+
+Total Sum = 8.44459e+14
+Interval length: 9255.54 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 10125.5 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 9460.26 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 9552.83 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 9526.39 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 9765.06 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 9853.21 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 9863.22 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 10072.6 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 9954.91 msec.
+4
+
+Total Sum = 8.44459e+14
+Interval length: 7914.85 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 7957.65 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 7546.17 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 7706.35 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 7480.64 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 7242.39 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 7085.11 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 7771.32 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 7803.13 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 7637.78 msec.
+5
+
+Total Sum = 8.44459e+14
+Interval length: 6517.58 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 6391.25 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 6404.33 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 6353.2 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 6586.71 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 6594.72 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 6337.24 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 6227.62 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 6017.06 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 6062.07 msec.
+6
+
+Total Sum = 8.44459e+14
+Interval length: 6123.12 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5943.82 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5527.78 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5696.94 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 6311.19 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 6742.21 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5826.2 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5545.36 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5452.88 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5301.41 msec.
+7
+
+Total Sum = 8.44459e+14
+Interval length: 5637.63 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5534.91 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 6076.63 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4972.29 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5632.8 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5596.13 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5055.51 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5311.96 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5714.33 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5375.88 msec.
+8
+
+Total Sum = 8.44459e+14
+Interval length: 4798.74 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4691.65 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4501.8 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4524.8 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4499.29 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4542.57 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4759.78 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4523.86 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4727.58 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4883.99 msec.
+9
+
+Total Sum = 8.44459e+14
+Interval length: 5247.47 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4678.88 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5003.56 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5201.91 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4823.61 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4690.89 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4849.64 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4768.77 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4775.31 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4860.16 msec.
+10
+
+Total Sum = 8.44459e+14
+Interval length: 4607.12 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4346.04 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 3973.54 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4492.93 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4399.82 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4051.09 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4227.48 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4223.99 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4015.75 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 3998.93 msec.
+11
+
+Total Sum = 8.44459e+14
+Interval length: 3930.55 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 3924.83 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4085.81 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4265.01 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 3989.43 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 3668.39 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 3685.84 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 3680.11 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 3696.33 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 3740.65 msec.
+12
+
+Total Sum = 8.44459e+14
+Interval length: 3785.76 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 3630.95 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 3496.23 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4144.1 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 3764.52 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 3531.09 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4629.95 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 5022.63 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4023.12 msec.
+
+Total Sum = 8.44459e+14
+Interval length: 4230.32 msec.

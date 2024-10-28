@@ -1,17 +1,26 @@
-mmult.x: code/mmult.c
+mmult:
 	gcc -g -Wall -o mmult.x code/mmult.c
 
-rect.x: code/rect.c
+rect:
 	gcc -g -Wall -o rect.x code/rect.c -lm
 
-rk3_8.x: code/rk3_8.c
+rk3_8:
 	gcc -g -Wall -o rk3_8.x code/rk3_8.c
 
-p_mmult.x: code/p_mmult.c 
-	gcc -g -Wall -o p_mmult.x code/p_mmult.c -lpthread
+mmult_par:  
+	gcc -g -Wall -o mmult_par.x code/mmult_par.c -lpthread
 
-p_rect.x: code/p_rect.c 
-	gcc -g -Wall -o p_rect.x code/p_rect.c -lm -lpthread
+rect_par: 
+	gcc -g -Wall -o rect_par.x code/rect_par.c -lm -lpthread
 
-p_rk3_8.x: code/p_rk3_8.c 
-	gcc -g -Wall -o p_rk3_8.x code/p_rk3_8.c -lpthread
+rk3_8_par:
+	gcc -g -Wall -o rk3_8_par.x code/rk3_8_par.c -lpthread
+
+Ommult_par:
+	gcc -g -Wall -O3 -o mmult_par.x code/mmult_par.c -lpthread
+
+Orect_par:
+	gcc -g -Wall -O3 -o rect_par.x code/rect_par.c -lm -lpthread
+
+Ork3_8_par:
+	gcc -g -Wall -O3 -o rk3_8_par.x code/rk3_8_par.c -lpthread

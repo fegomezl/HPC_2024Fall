@@ -6,10 +6,10 @@
 #include <semaphore.h>
 
 
-#define PROBLEM_SIZE 8192
+#define PROBLEM_SIZE 2048
 #define h 0.3154
 
-// Area under the curve
+// Runge-Kutta variables variables
 double y[PROBLEM_SIZE];
 double poww[PROBLEM_SIZE];
 double yout[PROBLEM_SIZE];
@@ -19,12 +19,11 @@ double k2[PROBLEM_SIZE];
 double k3[PROBLEM_SIZE];
 double k4[PROBLEM_SIZE];
 
+// pthreads variables
 int barrier_counter;
 pthread_mutex_t barrier_mutex;
 pthread_cond_t barrier_condvar;
 double totalSum;
-double *localSum;
-sem_t *semaphores;
 
 struct timeval startTime;
 struct timeval finishTime;
@@ -60,14 +59,7 @@ int main(int argc, char* argv[])
 	thread_handles = malloc(nproc*sizeof(pthread_t));
 	pthread_mutex_init(&barrier_mutex, NULL);
 	pthread_cond_init(&barrier_condvar, NULL);
-	localSum = malloc(nproc*sizeof(double));
-	semaphores = malloc(nproc*sizeof(sem_t));
 	long pid;
-
-	for (pid = 0; pid < nproc; pid++){
-		localSum[pid] = 0.0;
-		sem_init(&semaphores[pid], 0, 0);
-	}
 
 	// Run parallel code
 	for (pid = 0; pid < nproc; pid++)
@@ -78,8 +70,6 @@ int main(int argc, char* argv[])
 		pthread_join(thread_handles[pid] , NULL);
 	pthread_mutex_destroy(&barrier_mutex);
 	pthread_cond_destroy(&barrier_condvar);
-	free(localSum);
-	free(semaphores);
 	free(thread_handles);
 
 	//Get the end time
@@ -132,6 +122,7 @@ void *Pth_rk(void *pid){
 	long my_pid = (long) pid;
 	
 	int i, j;
+    double local_sum = 0.0;
 	int my_first_row = partition_index(PROBLEM_SIZE, my_pid);
 	int my_last_row = partition_index(PROBLEM_SIZE, my_pid+1);
 
@@ -169,26 +160,12 @@ void *Pth_rk(void *pid){
 		}
 
 		yout[i] = y[i] + (k1[i] + 3*k2[i] + 3*k3[i] + k4[i])/8.0;
-		localSum[my_pid] += yout[i];
-	}
-	
-	int stride, local_site, new_pid;
-	for (stride = 1; stride < nproc; stride *= 2){
-		local_site = my_pid%(2*stride);
-		if (local_site == stride){
-			new_pid = my_pid-stride;
-			localSum[new_pid] += localSum[my_pid];
-			sem_post(&semaphores[new_pid]);
-		} else if (local_site == 0){
-			new_pid = my_pid + stride;
-			if (new_pid < nproc){
-				sem_wait(&semaphores[my_pid]);
-			}
-		} 
+        local_sum += yout[i];
 	}
 
-	if (my_pid == 0)
-		totalSum = localSum[my_pid];
+	pthread_mutex_lock(&barrier_mutex);
+    totalSum += local_sum; 
+	pthread_mutex_unlock(&barrier_mutex);
 	
 	return NULL;
 } 

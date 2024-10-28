@@ -1,0 +1,252 @@
+1
+Result : -0.54 
+Interval length: 12.388 msec.
+Result : -0.54 
+Interval length: 8.413 msec.
+Result : -0.54 
+Interval length: 7.694 msec.
+Result : -0.54 
+Interval length: 7.701 msec.
+Result : -0.54 
+Interval length: 7.86 msec.
+Result : -0.54 
+Interval length: 7.734 msec.
+Result : -0.54 
+Interval length: 7.816 msec.
+Result : -0.54 
+Interval length: 10.176 msec.
+Result : -0.54 
+Interval length: 11.165 msec.
+Result : -0.54 
+Interval length: 8.018 msec.
+2
+Result : -0.54 
+Interval length: 4.48 msec.
+Result : -0.54 
+Interval length: 4.528 msec.
+Result : -0.54 
+Interval length: 5.433 msec.
+Result : -0.54 
+Interval length: 5.453 msec.
+Result : -0.54 
+Interval length: 6.651 msec.
+Result : -0.54 
+Interval length: 4.919 msec.
+Result : -0.54 
+Interval length: 4.47 msec.
+Result : -0.54 
+Interval length: 4.708 msec.
+Result : -0.54 
+Interval length: 4.477 msec.
+Result : -0.54 
+Interval length: 4.377 msec.
+3
+Result : -0.54 
+Interval length: 2.991 msec.
+Result : -0.54 
+Interval length: 3.063 msec.
+Result : -0.54 
+Interval length: 3.04 msec.
+Result : -0.54 
+Interval length: 3.032 msec.
+Result : -0.54 
+Interval length: 3.041 msec.
+Result : -0.54 
+Interval length: 3.123 msec.
+Result : -0.54 
+Interval length: 3.219 msec.
+Result : -0.54 
+Interval length: 3.145 msec.
+Result : -0.54 
+Interval length: 3.015 msec.
+Result : -0.54 
+Interval length: 3.067 msec.
+4
+Result : -0.54 
+Interval length: 2.349 msec.
+Result : -0.54 
+Interval length: 2.328 msec.
+Result : -0.54 
+Interval length: 2.32 msec.
+Result : -0.54 
+Interval length: 2.34 msec.
+Result : -0.54 
+Interval length: 2.333 msec.
+Result : -0.54 
+Interval length: 2.33 msec.
+Result : -0.54 
+Interval length: 2.306 msec.
+Result : -0.54 
+Interval length: 2.338 msec.
+Result : -0.54 
+Interval length: 2.335 msec.
+Result : -0.54 
+Interval length: 2.303 msec.
+5
+Result : -0.54 
+Interval length: 1.954 msec.
+Result : -0.54 
+Interval length: 1.941 msec.
+Result : -0.54 
+Interval length: 1.948 msec.
+Result : -0.54 
+Interval length: 2.01 msec.
+Result : -0.54 
+Interval length: 1.954 msec.
+Result : -0.54 
+Interval length: 1.907 msec.
+Result : -0.54 
+Interval length: 1.948 msec.
+Result : -0.54 
+Interval length: 1.936 msec.
+Result : -0.54 
+Interval length: 1.912 msec.
+Result : -0.54 
+Interval length: 1.936 msec.
+6
+Result : -0.54 
+Interval length: 1.637 msec.
+Result : -0.54 
+Interval length: 1.642 msec.
+Result : -0.54 
+Interval length: 1.648 msec.
+Result : -0.54 
+Interval length: 1.658 msec.
+Result : -0.54 
+Interval length: 1.642 msec.
+Result : -0.54 
+Interval length: 1.667 msec.
+Result : -0.54 
+Interval length: 1.654 msec.
+Result : -0.54 
+Interval length: 1.652 msec.
+Result : -0.54 
+Interval length: 1.653 msec.
+Result : -0.54 
+Interval length: 1.653 msec.
+7
+Result : -0.54 
+Interval length: 2.233 msec.
+Result : -0.54 
+Interval length: 2.281 msec.
+Result : -0.54 
+Interval length: 2.288 msec.
+Result : -0.54 
+Interval length: 2.111 msec.
+Result : -0.54 
+Interval length: 2.266 msec.
+Result : -0.54 
+Interval length: 2.259 msec.
+Result : -0.54 
+Interval length: 2.388 msec.
+Result : -0.54 
+Interval length: 2.249 msec.
+Result : -0.54 
+Interval length: 2.232 msec.
+Result : -0.54 
+Interval length: 2.245 msec.
+8
+Result : -0.54 
+Interval length: 2.002 msec.
+Result : -0.54 
+Interval length: 2.004 msec.
+Result : -0.54 
+Interval length: 1.79 msec.
+Result : -0.54 
+Interval length: 2.043 msec.
+Result : -0.54 
+Interval length: 2.032 msec.
+Result : -0.54 
+Interval length: 2.114 msec.
+Result : -0.54 
+Interval length: 1.887 msec.
+Result : -0.54 
+Interval length: 2.048 msec.
+Result : -0.54 
+Interval length: 1.983 msec.
+Result : -0.54 
+Interval length: 2.017 msec.
+9
+Result : -0.54 
+Interval length: 1.89 msec.
+Result : -0.54 
+Interval length: 1.822 msec.
+Result : -0.54 
+Interval length: 1.831 msec.
+Result : -0.54 
+Interval length: 1.811 msec.
+Result : -0.54 
+Interval length: 1.829 msec.
+Result : -0.54 
+Interval length: 1.855 msec.
+Result : -0.54 
+Interval length: 1.781 msec.
+Result : -0.54 
+Interval length: 1.847 msec.
+Result : -0.54 
+Interval length: 1.824 msec.
+Result : -0.54 
+Interval length: 1.765 msec.
+10
+Result : -0.54 
+Interval length: 1.613 msec.
+Result : -0.54 
+Interval length: 1.596 msec.
+Result : -0.54 
+Interval length: 1.654 msec.
+Result : -0.54 
+Interval length: 1.67 msec.
+Result : -0.54 
+Interval length: 1.638 msec.
+Result : -0.54 
+Interval length: 1.593 msec.
+Result : -0.54 
+Interval length: 1.662 msec.
+Result : -0.54 
+Interval length: 1.642 msec.
+Result : -0.54 
+Interval length: 1.639 msec.
+Result : -0.54 
+Interval length: 1.673 msec.
+11
+Result : -0.54 
+Interval length: 1.614 msec.
+Result : -0.54 
+Interval length: 1.566 msec.
+Result : -0.54 
+Interval length: 1.554 msec.
+Result : -0.54 
+Interval length: 1.539 msec.
+Result : -0.54 
+Interval length: 1.564 msec.
+Result : -0.54 
+Interval length: 1.571 msec.
+Result : -0.54 
+Interval length: 1.586 msec.
+Result : -0.54 
+Interval length: 1.576 msec.
+Result : -0.54 
+Interval length: 1.538 msec.
+Result : -0.54 
+Interval length: 1.572 msec.
+12
+Result : -0.54 
+Interval length: 1.403 msec.
+Result : -0.54 
+Interval length: 1.42 msec.
+Result : -0.54 
+Interval length: 1.428 msec.
+Result : -0.54 
+Interval length: 1.425 msec.
+Result : -0.54 
+Interval length: 1.456 msec.
+Result : -0.54 
+Interval length: 1.443 msec.
+Result : -0.54 
+Interval length: 1.436 msec.
+Result : -0.54 
+Interval length: 1.471 msec.
+Result : -0.54 
+Interval length: 1.412 msec.
+Result : -0.54 
+Interval length: 1.416 msec.
