@@ -5,7 +5,7 @@
 #include <omp.h>
 
 
-#define PROBLEM_SIZE 8192
+#define PROBLEM_SIZE 15000
 
 
 struct timeval startTime;
@@ -119,7 +119,8 @@ int main(int argc, char* argv[])
 	//Get the end time
 	gettimeofday(&finishTime, NULL);  /* END TIME */
 
-	printf("\n\ntotalSum=%g\n\n",totalSum);
+	if (argc < 3)
+		printf("\n\ntotalSum=%g\n\n",totalSum);
 	
 	
 	//Calculate the interval length 
@@ -127,8 +128,12 @@ int main(int argc, char* argv[])
 	                     + (double)(finishTime.tv_usec-startTime.tv_usec);
 	timeIntervalLength=timeIntervalLength/1000;
 
-	//Print the interval length
-	printf("Interval length: %g msec.\n", timeIntervalLength);
+	//Print the interval lenght
+	if (argc < 3){
+		printf("Interval length: %g msec.\n", timeIntervalLength);
+	} else { 
+		printf("%d\t%g\n", nproc, timeIntervalLength);
+	}
 	
 	return 0;
 }

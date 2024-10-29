@@ -4,7 +4,7 @@
 #include <sys/time.h> 
 #include <omp.h> 
 
-#define		NROW	1024
+#define		NROW	4096
 #define		NCOL	NROW
 
 
@@ -70,7 +70,8 @@ int main(int argc, char* argv[])
 			}
 		}
 	
-		printf("\nTotal Sum = %g\n",totalSum);
+		if (argc < 3)
+			printf("\nTotal Sum = %g\n",totalSum);
 	#endif
 
 	//Calculate the interval length 
@@ -78,8 +79,12 @@ int main(int argc, char* argv[])
 	                     + (double)(finishTime.tv_usec-startTime.tv_usec);
 	timeIntervalLength=timeIntervalLength/1000;
 
-	//Print the interval length
-	printf("Interval length: %g msec.\n", timeIntervalLength);
+	//Print the interval lenght
+	if (argc < 3){
+		printf("Interval length: %g msec.\n", timeIntervalLength);
+	} else { 
+		printf("%d\t%g\n", nproc, timeIntervalLength);
+	}
 
 	return 0;  
 }
