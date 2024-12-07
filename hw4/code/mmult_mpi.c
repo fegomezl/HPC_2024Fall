@@ -2,7 +2,7 @@
 #include <math.h>
 #include <mpi.h> 
 
-#define		NROW	256
+#define		NROW	700
 #define		NCOL	NROW
 
 // Find first index of pid for a load-balanced partition of N items

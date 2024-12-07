@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include <mpi.h>
 
-#define		NSTEPS	8388608
-#define		NITER 	8388608
+#define		NSTEPS	100000000
+#define		NITER 	100000000
 #define		P_START	0 
 #define		P_END	10 
 

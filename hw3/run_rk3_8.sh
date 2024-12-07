@@ -13,7 +13,7 @@
 
 for i in $(seq 1 32);
 do
-    for j in $(seq 1 30);
+    for j in $(seq 1 50);
     do
         ./rk3_8_par.x $i cluster
     done
