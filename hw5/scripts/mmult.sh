@@ -13,7 +13,7 @@
 
 make mmult
 
-for i in $(seq 1 10);
+for i in $(seq 1 1);
 do
-    ./mmult.x cluster
+    ./mmult.x
 done

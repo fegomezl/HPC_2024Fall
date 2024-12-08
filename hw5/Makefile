@@ -26,13 +26,13 @@ rk4_mpi:
 	mpicc -g -Wall -O3 -o rk4_mpi.x code/rk4_mpi.c
 
 mmult_gpu:
-	nvcc -gencode arch=compute_61,code=[compute_61,sm_61] -O3 -o mmult_gpu.x code/mmult_gpu.cu
+	nvcc -gencode arch=compute_61,code=[compute_61,sm_61] -o mmult_gpu.x code/mmult_gpu.cu
 
 rect_gpu:
-	nvcc -gencode arch=compute_61,code=[compute_61,sm_61] -O3 -o rect_gpu.x code/rect_gpu.cu
+	nvcc -gencode arch=compute_61,code=[compute_61,sm_61] -o rect_gpu.x code/rect_gpu.cu
 
 rk4_gpu:
-	nvcc -gencode arch=compute_61,code=[compute_61,sm_61] -O3 -o rk4_gpu.x code/rk4_gpu.cu
+	nvcc -gencode arch=compute_61,code=[compute_61,sm_61] -o rk4_gpu.x code/rk4_gpu.cu
 
 see_smp:
 	squeue -M smp -u feg46

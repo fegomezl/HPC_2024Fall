@@ -4,7 +4,7 @@
 #include <sys/time.h> 
 
 // System size
-#define		N	256
+#define		N	1024
 
 // Structures for profilling
 struct timeval startTime;

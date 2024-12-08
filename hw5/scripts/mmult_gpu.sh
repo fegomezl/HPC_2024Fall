@@ -8,13 +8,14 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --time=2:00:00
 #SBATCH --qos=short
-#SBATCH --output=results/mmult_gpu-256_%A.txt
+#SBATCH --output=results/mmult_gpu-X_%A.txt
 
 module load cuda/11.0
 
 make mmult_gpu
 
-for i in $(seq 1 10);
+for i in $(seq 1 1);
 do
-    ./mmult_gpu.x cluster
+    ./mmult_gpu.x
+#cluster
 done

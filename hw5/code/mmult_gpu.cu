@@ -4,7 +4,7 @@
 #include <cuda.h>
 
 // System size
-#define		N	256
+#define		N	1024
 
 // Structures for profilling
 struct timeval startTime;
@@ -53,7 +53,7 @@ int main(int argc, char* argv[]){
 	gettimeofday(&startTime, NULL);
    
 	// Call device function and synchronize
-	CUDA_mmult<<<16,16>>>(inputArrayA, inputArrayB, outputArrayC);
+	CUDA_mmult<<<N*N/1024,1024>>>(inputArrayA, inputArrayB, outputArrayC);
 	cudaDeviceSynchronize();
 	
 	// Get the end time

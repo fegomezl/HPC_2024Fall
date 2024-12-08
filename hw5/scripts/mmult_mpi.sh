@@ -17,5 +17,5 @@ make mmult_mpi
 
 for i in $(seq 1 32);
 do
-	mpirun -n $i ./mmult_mpi.x cluster
+	mpirun -n $i ./mmult_mpi.x
 done

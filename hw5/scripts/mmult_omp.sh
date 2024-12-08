@@ -15,5 +15,5 @@ make mmult_omp
 
 for i in $(seq 1 32);
 do
-    ./mmult_omp.x $i cluster
+    ./mmult_omp.x $i
 done
