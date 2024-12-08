@@ -91,16 +91,16 @@ int main(int argc, char* argv[]){
 	gettimeofday(&startTime, NULL);
 
 	// Run each RK step in a separate kernel and synchronize device in between
-	CUDA_rk4_0<<<1024,1024>>>(h, pow, c, y, k1);
+	CUDA_rk4_0<<<N/1024,1024>>>(h, pow, c, y, k1);
 	cudaDeviceSynchronize();	
 
-	CUDA_rk4_1<<<1024,1024>>>(h, pow, c, y, k1, k2);
+	CUDA_rk4_1<<<N/1024,1024>>>(h, pow, c, y, k1, k2);
 	cudaDeviceSynchronize();	
 
-	CUDA_rk4_1<<<1024,1024>>>(h, pow, c, y, k2, k3);
+	CUDA_rk4_1<<<N/1024,1024>>>(h, pow, c, y, k2, k3);
 	cudaDeviceSynchronize();	
 
-	CUDA_rk4_2<<<1024,1024>>>(h, pow, c, y, k1, k2, k3, k4, yout);
+	CUDA_rk4_2<<<N/1024,1024>>>(h, pow, c, y, k1, k2, k3, k4, yout);
 	cudaDeviceSynchronize();
 
 	// Get the end time

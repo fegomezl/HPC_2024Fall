@@ -36,7 +36,7 @@ int main(int argc, char* argv[]){
 	gettimeofday(&startTime, NULL);
 
 	// Run device kernel and syncronize device
-	CUDA_rect<<<16,16>>>(h, area);
+	CUDA_rect<<<N/1024,1024>>>(h, area);
 	cudaDeviceSynchronize();
 	*area = h*(*area);
 

@@ -42,7 +42,7 @@ int main(int argc, char* argv[]){
         i = n/N;
         j = n%N;
         for (k = 0; k < N; k++)
-            outputArrayC[n] += inputArrayA[i*N+j]*inputArrayB[i*N+j];
+            outputArrayC[n] += inputArrayA[i*N+k]*inputArrayB[k*N+j];
 	}
 	
 	// Get the end time
