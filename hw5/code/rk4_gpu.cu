@@ -1,15 +1,17 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 #include <sys/time.h> 
 #include <cuda.h>
 
-#define N 1024
+// System size
+#define		N	256
 
+// Structures for profilling
 struct timeval startTime;
 struct timeval finishTime;
 double timeIntervalLength;
 
+// First RK step
 __global__ void CUDA_rk4_0(const double h, const double pow[], const double c[], const double y[], double k[]){
 	int my_tid = blockDim.x*blockIdx.x + threadIdx.x;
 	if (0 < my_tid && my_tid < N){
@@ -22,6 +24,7 @@ __global__ void CUDA_rk4_0(const double h, const double pow[], const double c[],
 	}
 }
 
+// Second and third RK steps
 __global__ void CUDA_rk4_1(const double h, const double pow[], const double c[], const double y[], const double k_old[], double k_new[]){
 	int my_tid = blockDim.x*blockIdx.x + threadIdx.x;
 	if (0 < my_tid && my_tid < N){
@@ -34,6 +37,7 @@ __global__ void CUDA_rk4_1(const double h, const double pow[], const double c[],
 	}
 }
 
+// Fourth RK step
 __global__ void CUDA_rk4_2(const double h, const double pow[], const double c[], const double y[], 
 						   const double k1[], const double k2[], const double k3[], double k4[], double yout[]){
 	int my_tid = blockDim.x*blockIdx.x + threadIdx.x;
@@ -53,8 +57,7 @@ int main(int argc, char* argv[]){
 
 	// Define variables
 	int i, j;
-	double h;
-	double totalSum;
+	double h, totalSum;
 	double*  y;
 	double*  k1;
 	double*  k2;
@@ -87,6 +90,7 @@ int main(int argc, char* argv[]){
 	// Get the start time
 	gettimeofday(&startTime, NULL);
 
+	// Run each RK step in a separate kernel and synchronize device in between
 	CUDA_rk4_0<<<1024,1024>>>(h, pow, c, y, k1);
 	cudaDeviceSynchronize();	
 
@@ -103,17 +107,23 @@ int main(int argc, char* argv[]){
 	gettimeofday(&finishTime, NULL);
 
 	// Check results
-	for (i = 0; i < N; i++)
-		totalSum += yout[i];
-	printf("\n\ntotalSum=%g\n\n",totalSum);
+	if (argc < 2){
+		for (i = 0; i < N; i++)
+			totalSum += yout[i];
+		printf("Total Sum : %g \n", totalSum);
+	}
 	
 	// Calculate the interval length 
-	timeIntervalLength = (double)(finishTime.tv_sec-startTime.tv_sec) * 1000000 
+	timeIntervalLength = (double)(finishTime.tv_sec-startTime.tv_sec)*1000000 
 	                   + (double)(finishTime.tv_usec-startTime.tv_usec);
 	timeIntervalLength = timeIntervalLength/1000;
 
-	// Print the interval lenght
-	printf("Interval length: %g msec.\n", timeIntervalLength);
+	// Print the interval length
+	if (argc < 2){
+		printf("Interval length: %g msec.\n", timeIntervalLength);
+	} else { 
+		printf("%g\n", timeIntervalLength);
+	}
 
 	// Free memory
 	cudaFree(y);

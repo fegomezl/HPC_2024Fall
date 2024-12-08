@@ -3,6 +3,7 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "omp.h": "c",
-        "cmath": "c"
+        "cmath": "c",
+        "math.h": "c"
     }
 }
