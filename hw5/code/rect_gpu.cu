@@ -15,16 +15,15 @@ double timeIntervalLength;
 __global__ void CUDA_rect(const double h, double* area){
 	int my_tid = blockDim.x*blockIdx.x + threadIdx.x;
 	if (0 < my_tid && my_tid < NSTEPS)
-		atomicAdd(area, cos(P_START+my_tid*h)*h);
+		atomicAdd(area, cos(P_START+my_tid*h));
 }
 
 int main(int argc, char* argv[]){
 	// Define variables
-	int i;
 	double h;
 	double *area;
 
-	// Allocate vairables
+	// Allocate variables
 	cudaMallocManaged(&area, sizeof(double));
 	
 	// Initialize variables
@@ -34,7 +33,7 @@ int main(int argc, char* argv[]){
 	// Get the start time
 	gettimeofday(&startTime, NULL);
 
-	CUDA_rect<<1024,1024>>(h, area);
+	CUDA_rect<<<1024,1024>>>(h, area);
 	cudaDeviceSynchronize();
 	*area = h*(*area);
 
