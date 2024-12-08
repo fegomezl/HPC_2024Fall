@@ -56,7 +56,7 @@ int main(int argc, char* argv[]){
 	if (argc < 2){
 		printf("Interval length: %g msec.\n", timeIntervalLength);
 	} else { 
-		printf("%d\t%g\n", nproc, timeIntervalLength);
+		printf("%g\n", timeIntervalLength);
 	}
 
 	// Free memory

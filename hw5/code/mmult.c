@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <sys/time.h> 
 
@@ -42,7 +43,7 @@ int main(int argc, char* argv[]){
         j = n%N;
         for (k = 0; k < N; k++)
             outputArrayC[n] += inputArrayA[i*N+j]*inputArrayB[i*N+j];
-    }
+	}
 	
 	// Get the end time
 	gettimeofday(&finishTime, NULL);

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=rk4_mpi_%A
+#SBATCH --job-name=rk4_mpi
 #SBATCH --cluster=smp
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=32
@@ -9,7 +9,7 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --time=2:00:00
 #SBATCH --qos=short
-#SBATCH --output=results/rk4_mpi_256_%A.txt
+#SBATCH --output=results/rk4_mpi-256_%A.txt
 
 module load openmpi/4.0.5
 

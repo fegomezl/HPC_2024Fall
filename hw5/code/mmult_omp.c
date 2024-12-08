@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <sys/time.h> 
 #include <omp.h> 
@@ -27,7 +28,7 @@ int main(int argc, char* argv[]){
 	outputArrayC = (double*)malloc(N*N*sizeof(double));
 	
 	// Initialize variables
-    nproc = strtol(argv[1], NULL, 10);
+	nproc = strtol(argv[1], NULL, 10);
 	for (i = 0; i < N; i++){
 		for (j = 0; j < N; j++){
 			inputArrayA[i*N+j] = i*N+j;
@@ -39,15 +40,16 @@ int main(int argc, char* argv[]){
 	// Get the start time
 	gettimeofday(&startTime, NULL);
 
-    // Divide rows and columns of resulting matrix among threads
-    #pragma omp parallel for num_threads(nproc) shared(inputArrayA, inputArrayB, outputArrayC) private(n, i, j, k)
-    for (n = 0; n < N*N; n++){
-        i = n/N;
-        j = n%N;
-        for (k = 0; k < N; k++)
-            outputArrayC[n] += inputArrayA[i*N+k]*inputArrayB[k*N+j];
-    }
-	
+
+	// Divide rows and columns of resulting matrix among threads
+	#pragma omp parallel for num_threads(nproc) shared(inputArrayA, inputArrayB, outputArrayC) private(n, i, j, k)
+	for (n = 0; n < N*N; n++){
+		i = n/N;
+		j = n%N;
+		for (k = 0; k < N; k++)
+		    outputArrayC[n] += inputArrayA[i*N+k]*inputArrayB[k*N+j];
+	}
+
 	// Get the end time
 	gettimeofday(&finishTime, NULL);
 
@@ -67,7 +69,7 @@ int main(int argc, char* argv[]){
 
 	// Calculate the interval length 
 	timeIntervalLength = (double)(finishTime.tv_sec-startTime.tv_sec)*1000000 
-	                   + (double)(finishTime.tv_usec-startTime.tv_usec);
+			   + (double)(finishTime.tv_usec-startTime.tv_usec);
 	timeIntervalLength = timeIntervalLength/1000;
 
 	// Print the interval lenght

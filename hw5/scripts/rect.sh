@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=rect_%A
+#SBATCH --job-name=rect
 #SBATCH --cluster=smp
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
@@ -9,7 +9,7 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --time=2:00:00
 #SBATCH --qos=short
-#SBATCH --output=results/rect_256_%A.txt
+#SBATCH --output=results/rect-256_%A.txt
 
 make rect
 

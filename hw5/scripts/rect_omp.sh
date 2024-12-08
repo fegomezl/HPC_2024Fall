@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=rect_omp_%A
+#SBATCH --job-name=rect_omp
 #SBATCH --cluster=smp
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=32
@@ -9,7 +9,7 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --time=2:00:00
 #SBATCH --qos=short
-#SBATCH --output=results/rect_omp_256_%A.txt
+#SBATCH --output=results/rect_omp-256_%A.txt
 
 make rect_omp
 

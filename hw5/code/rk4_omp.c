@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <sys/time.h>
 #include <omp.h>
@@ -12,7 +13,7 @@ struct timeval finishTime;
 double timeIntervalLength;
 
 // Find first index of pid for a load-balanced partition of N items
-int partition_index(long size, long pid, long nproc);
+int partition_index(long size, int pid, int nproc);
 
 int main(int argc, char* argv[]){
 
@@ -53,39 +54,39 @@ int main(int argc, char* argv[]){
 	// Get the start time
 	gettimeofday(&startTime, NULL);
 
-    // Initialize parallel section: Calculate each k step and wait for all threads to finish between calculations.
-    // Finally, reduce the total sum of the resulting vector.
-    #pragma omp parallel num_threads(nproc) shared(y, k1, k2, k3, k4, pow, yout, c) private(i, j) reduction(+: totalSum)
-    {
-        #pragma omp for 
-        for (i = 0; i < N; i++){ 
+    	// Initialize parallel section: Calculate each k step and wait for all threads to finish between calculations.
+    	// Finally, reduce the total sum of the resulting vector.
+    	#pragma omp parallel num_threads(nproc) shared(y, k1, k2, k3, k4, pow, yout, c) private(i, j) reduction(+: totalSum)
+    	{
+        	#pragma omp for 
+        	for (i = 0; i < N; i++){ 
 			k1[i] = pow[i];
 			for (j = 0; j < N; j++)
 				k1[i] -= c[i*N+j]*y[j];
 			k1[i] *= h;
 		}
-        #pragma omp barrier
+        	#pragma omp barrier
 
-        #pragma omp for 
-        for (i = 0; i < N; i++){ 
+        	#pragma omp for 
+        	for (i = 0; i < N; i++){ 
 			k2[i] = pow[i];
 			for (j = 0; j < N; j++)
 				k2[i] -= c[i*N+j]*(y[j]+0.5*k1[j]);
 			k2[i] *= h;
 		}
-        #pragma omp barrier
+        	#pragma omp barrier
 
-        #pragma omp for 
-        for (i = 0; i < N; i++){ 
+        	#pragma omp for 
+        	for (i = 0; i < N; i++){ 
 			k3[i] = pow[i];
 			for (j = 0; j < N; j++)
 				k3[i] -= c[i*N+j]*(y[j]+0.5*k2[j]);
 			k3[i] *= h;
 		}
-        #pragma omp barrier
+        	#pragma omp barrier
 
-        #pragma omp for 
-        for (i = 0; i < N; i++){ 
+        	#pragma omp for 
+        	for (i = 0; i < N; i++){ 
 			k4[i] = pow[i];
 			for (j = 0; j < N; j++)
 				k4[i] -= c[i*N+j]*(y[j]+k3[j]);
@@ -93,7 +94,7 @@ int main(int argc, char* argv[]){
 
 			yout[i] = y[i] + (k1[i] + 2*k2[i] + 2*k3[i] + k4[i])/6.0;
 		}
-    }
+    	}
 
 	// Get the end time
 	gettimeofday(&finishTime, NULL);

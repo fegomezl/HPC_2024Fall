@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=mmult_mpi_%A
+#SBATCH --job-name=mmult_mpi
 #SBATCH --cluster=smp
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=32
@@ -9,7 +9,7 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --time=2:00:00
 #SBATCH --qos=short
-#SBATCH --output=results/mmult_mpi_256_%A.txt
+#SBATCH --output=results/mmult_mpi-256_%A.txt
 
 module load openmpi/4.0.5
 

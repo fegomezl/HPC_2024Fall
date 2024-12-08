@@ -11,6 +11,7 @@ struct timeval startTime;
 struct timeval finishTime;
 double timeIntervalLength;
 
+// Perform dot product for matrix multiplication on each thread
 __global__ void CUDA_mmult(const double inputArrayA[], const double inputArrayB[], double outputArrayC[]){
 	int my_tid = blockDim.x*blockIdx.x + threadIdx.x;
 	int i = my_tid/N;

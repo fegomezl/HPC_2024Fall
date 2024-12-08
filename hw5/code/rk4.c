@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <sys/time.h>
 
@@ -49,30 +50,30 @@ int main(int argc, char* argv[]){
 
 	// Apply RK4 method, calculating each step one at a time
 	for (i = 0; i < N; i++){ 
-        k1[i] = pow[i];
-        for (j = 0; j < N; j++)
-            k1[i] -= c[i*N+j]*y[j];
+        	k1[i] = pow[i];
+        	for (j = 0; j < N; j++)
+            		k1[i] -= c[i*N+j]*y[j];
 		k1[i] *= h;
 	} 	
 
 	for (i = 0; i < N; i++){ 
-        k2[i] = pow[i];
-        for (j = 0; j < N; j++)
-            k2[i] -= c[i*N+j]*(y[j]+0.5*k1[j]);
+        	k2[i] = pow[i];
+        	for (j = 0; j < N; j++)
+            		k2[i] -= c[i*N+j]*(y[j]+0.5*k1[j]);
 		k2[i] *= h;
 	}
 
 	for (i = 0; i < N; i++){ 
-        k3[i] = pow[i];
-        for (j = 0; j < N; j++)
-            k3[i] -= c[i*N+j]*(y[j]+0.5*k2[j]);
+        	k3[i] = pow[i];
+        	for (j = 0; j < N; j++)
+            		k3[i] -= c[i*N+j]*(y[j]+0.5*k2[j]);
 		k3[i] *= h;
 	}
 
 	for (i = 0; i < N; i++){ 
-        k4[i] = pow[i];
-        for (j = 0; j < N; j++)
-            k4[i] -= c[i*N+j]*(y[j]+k3[j]);
+        	k4[i] = pow[i];
+        	for (j = 0; j < N; j++)
+            		k4[i] -= c[i*N+j]*(y[j]+k3[j]);
 		k4[i] *= h;
 
 		yout[i] = y[i] + (k1[i] + 2*k2[i] + 2*k3[i] + k4[i])/6.0;

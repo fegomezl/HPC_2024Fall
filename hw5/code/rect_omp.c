@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include <time.h>
 #include <sys/time.h>
@@ -24,14 +25,14 @@ int main(int argc, char* argv[]){
 	nproc = strtol(argv[1], NULL, 10);
 	h = 10.0/N;
 	area = 0.0;
-	local_area = 0.0;
 
 	// Get the start time
 	gettimeofday(&startTime, NULL);
 
 	// Divide sum among threads and reduce local result into global variable
-    #pragma omp parallel num_threads(nproc) shared(h) private(i, local_area) reduction(+: area)
+	#pragma omp parallel num_threads(nproc) shared(h) private(i, local_area) reduction(+: area)
 	{
+		local_area = 0.0;
 		#pragma omp for
 		for (i = 0; i < N; i++)
 		    local_area += cos(i*h)*h;

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=mmult_%A
+#SBATCH --job-name=mmult
 #SBATCH --cluster=smp
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
@@ -9,7 +9,7 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --time=2:00:00
 #SBATCH --qos=short
-#SBATCH --output=results/mmult_256_%A.txt
+#SBATCH --output=results/mmult-256_%A.txt
 
 make mmult
 

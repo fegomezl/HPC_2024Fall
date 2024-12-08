@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=rk4_gpu_%A
+#SBATCH --job-name=rk4_gpu
 #SBATCH --cluster=gpu
 #SBATCH --partition=gtx1080
 #SBATCH --gres=gpu:1
@@ -8,7 +8,7 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --time=2:00:00
 #SBATCH --qos=short
-#SBATCH --output=results/rk4_gpu_256_%A.txt
+#SBATCH --output=results/rk4_gpu-256_%A.txt
 
 module load cuda/11.0
 
