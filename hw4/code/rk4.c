@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <sys/time.h>
+//#include <sys/time.h>
 
 
-#define PROBLEM_SIZE 8192
+#define PROBLEM_SIZE 1024
 
 
-struct timeval startTime;
-struct timeval finishTime;
-double timeIntervalLength;
+//struct timeval startTime;
+//struct timeval finishTime;
+//double timeIntervalLength;
 
 
 int main(int argc, char* argv[])
@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
 
 	
 	//Get the start time
-	gettimeofday(&startTime, NULL);  	
+	//gettimeofday(&startTime, NULL);  	
 
 	for (i = 0; i < PROBLEM_SIZE; i++) 
 	{ 
@@ -101,18 +101,18 @@ int main(int argc, char* argv[])
 	}
 
 	//Get the end time
-	gettimeofday(&finishTime, NULL);  /* after time */
+	//gettimeofday(&finishTime, NULL);  /* after time */
 
 	printf("\n\ntotalSum=%g\n\n",totalSum);
 	
 	
 	//Calculate the interval length 
-	timeIntervalLength = (double)(finishTime.tv_sec-startTime.tv_sec) * 1000000 
-	                     + (double)(finishTime.tv_usec-startTime.tv_usec);
-	timeIntervalLength=timeIntervalLength/1000;
+	//timeIntervalLength = (double)(finishTime.tv_sec-startTime.tv_sec) * 1000000 
+	//                     + (double)(finishTime.tv_usec-startTime.tv_usec);
+	//timeIntervalLength=timeIntervalLength/1000;
 
 	//Print the interval lenght
-	printf("Interval length: %g msec.\n", timeIntervalLength);
+	//printf("Interval length: %g msec.\n", timeIntervalLength);
 	
 	
 

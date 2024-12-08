@@ -1,121 +1,97 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <sys/time.h>
+//#include <sys/time.h>
 
+#define N 1024
 
-#define PROBLEM_SIZE 8192
+//struct timeval startTime;
+//struct timeval finishTime;
+//double timeIntervalLength;
 
+int main(int argc, char* argv[]){
 
-struct timeval startTime;
-struct timeval finishTime;
-double timeIntervalLength;
-
-
-int main(int argc, char* argv[])
-{
-	int i,j;
-	double h=0.3154;
+	// Define variables
+	int i, j;
+	double h;
+	double totalSum;
 	double*  y;
-	double*  yt;
 	double*  k1;
 	double*  k2;
 	double*  k3;
 	double*  k4;
 	double*  pow;
 	double*  yout;
-	double** c;
+	double* c;
 
-	double totalSum=0.0;
+	// Allocate arrays
+	y    = (double*)malloc(N*sizeof(double));
+	k1   = (double*)malloc(N*sizeof(double));
+	k2   = (double*)malloc(N*sizeof(double));
+	k3   = (double*)malloc(N*sizeof(double));
+	k4   = (double*)malloc(N*sizeof(double));
+	pow  = (double*)malloc(N*sizeof(double));
+	yout = (double*)malloc(N*sizeof(double));
+	c    = (double*)malloc(N*N*sizeof(double));
 
-
-	y    = (double* )malloc(PROBLEM_SIZE*sizeof(double));
-	yt   = (double* )malloc(PROBLEM_SIZE*sizeof(double));
-	k1   = (double* )malloc(PROBLEM_SIZE*sizeof(double));
-	k2   = (double* )malloc(PROBLEM_SIZE*sizeof(double));
-	k3   = (double* )malloc(PROBLEM_SIZE*sizeof(double));
-	k4   = (double* )malloc(PROBLEM_SIZE*sizeof(double));
-	pow  = (double* )malloc(PROBLEM_SIZE*sizeof(double));
-	yout = (double* )malloc(PROBLEM_SIZE*sizeof(double));
-	c    = (double**)malloc(PROBLEM_SIZE*sizeof(double*));
-	for (i=0;i<PROBLEM_SIZE;i++) 
-	{
-		c[i]=(double*)malloc(PROBLEM_SIZE*sizeof(double));
+	// Initialize variables
+	h = 0.3154;
+	totalSum = 0.0;
+	for (i = 0; i < N; i++){
+		y[i] = i*i;
+		pow[i] = 2*i;
+		for (j = 0; j < N; j++)
+			c[i*N+j] = i*i+j;
 	}
-
-	for (i = 0; i < PROBLEM_SIZE; i++) 
-	{
-		y[i]=i*i;
-		pow[i]=i+i;
-		for (j = 0; j < PROBLEM_SIZE; j++)
-		{
-			c[i][j]=i*i+j;
-		}
-	}
-
 	
-	//Get the start time
-	gettimeofday(&startTime, NULL);  	
+	// Get the start time
+	//gettimeofday(&startTime, NULL);  	
 
-	for (i = 0; i < PROBLEM_SIZE; i++) 
-	{ 
-		yt[i] = 0.0;
-		for (j = 0; j < PROBLEM_SIZE; j++) 
-		{
-			yt[i] += c[i][j]*y[j];
-		}
-		k1[i] = h*(pow[i]-yt[i]);
+	for (i = 0; i < N; i++){ 
+        k1[i] = pow[i];
+        for (j = 0; j < N; j++)
+            k1[i] -= c[i*N+j]*y[j];
+		k1[i] *= h;
+	} 	
+
+	for (i = 0; i < N; i++){ 
+        k2[i] = pow[i];
+        for (j = 0; j < N; j++)
+            k2[i] -= c[i*N+j]*(y[j]+0.5*k1[j]);
+		k2[i] *= h;
 	}
 
-	for (i = 0; i < PROBLEM_SIZE; i++) 
-	{
-		yt[i] = 0.0;
-		for (j = 0; j < PROBLEM_SIZE; j++) 
-		{
-			yt[i] += c[i][j]*(y[j]+0.5*k1[j]);
-		}
-		k2[i] = h*(pow[i]-yt[i]);
+	for (i = 0; i < N; i++){ 
+        k3[i] = pow[i];
+        for (j = 0; j < N; j++)
+            k3[i] -= c[i*N+j]*(y[j]+0.5*k2[j]);
+		k3[i] *= h;
 	}
 
-	for (i = 0; i < PROBLEM_SIZE; i++) 
-	{
-		yt[i] = 0.0;
-		for (j = 0; j < PROBLEM_SIZE; j++) 
-		{
-			yt[i] += c[i][j]*(y[j]+0.5*k2[j]);
-		}
-		k3[i] = h*(pow[i]-yt[i]);
-	}
-
-	for (i =0; i < PROBLEM_SIZE; i++) 
-	{
-		yt[i]=0.0;
-		for (j = 0; j < PROBLEM_SIZE; j++) 
-		{
-			yt[i] += c[i][j]*(y[j]+k3[j]);
-		}
-		k4[i] = h*(pow[i]-yt[i]);
+	for (i = 0; i < N; i++){ 
+        k4[i] = pow[i];
+        for (j = 0; j < N; j++)
+            k4[i] -= c[i*N+j]*(y[j]+k3[j]);
+		k4[i] *= h;
 
 		yout[i] = y[i] + (k1[i] + 2*k2[i] + 2*k3[i] + k4[i])/6.0;
-		totalSum+=yout[i];
 	}
 
-	//Get the end time
-	gettimeofday(&finishTime, NULL);  /* after time */
+	// Get the end time
+	//gettimeofday(&finishTime, NULL);
 
+	// Check results
+	for (i = 0; i < N; i++)
+		totalSum += yout[i];
 	printf("\n\ntotalSum=%g\n\n",totalSum);
 	
-	
-	//Calculate the interval length 
-	timeIntervalLength = (double)(finishTime.tv_sec-startTime.tv_sec) * 1000000 
-	                     + (double)(finishTime.tv_usec-startTime.tv_usec);
-	timeIntervalLength=timeIntervalLength/1000;
+	// Calculate the interval length 
+	//timeIntervalLength = (double)(finishTime.tv_sec-startTime.tv_sec) * 1000000 
+	//                   + (double)(finishTime.tv_usec-startTime.tv_usec);
+	//timeIntervalLength=timeIntervalLength/1000;
 
-	//Print the interval lenght
-	printf("Interval length: %g msec.\n", timeIntervalLength);
-	
-	
+	// Print the interval lenght
+	//printf("Interval length: %g msec.\n", timeIntervalLength);
 
-	
 	return 0;
 }
