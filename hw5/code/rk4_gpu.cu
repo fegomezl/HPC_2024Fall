@@ -4,7 +4,7 @@
 #include <cuda.h>
 
 // System size
-#define		N	256
+#define		N	4096
 
 // Structures for profilling
 struct timeval startTime;
@@ -14,7 +14,7 @@ double timeIntervalLength;
 // First RK step
 __global__ void CUDA_rk4_0(const double h, const double pow[], const double c[], const double y[], double k[]){
 	int my_tid = blockDim.x*blockIdx.x + threadIdx.x;
-	if (0 < my_tid && my_tid < N){
+	if (my_tid < N){
 		int j;
 		double my_k = pow[my_tid];
 		for (j = 0; j < N; j++)
@@ -27,7 +27,7 @@ __global__ void CUDA_rk4_0(const double h, const double pow[], const double c[],
 // Second and third RK steps
 __global__ void CUDA_rk4_1(const double h, const double pow[], const double c[], const double y[], const double k_old[], double k_new[]){
 	int my_tid = blockDim.x*blockIdx.x + threadIdx.x;
-	if (0 < my_tid && my_tid < N){
+	if (my_tid < N){
 		int j;
 		double my_k = pow[my_tid];
 	        for (j = 0; j < N; j++)
@@ -41,7 +41,7 @@ __global__ void CUDA_rk4_1(const double h, const double pow[], const double c[],
 __global__ void CUDA_rk4_2(const double h, const double pow[], const double c[], const double y[], 
 						   const double k1[], const double k2[], const double k3[], double k4[], double yout[]){
 	int my_tid = blockDim.x*blockIdx.x + threadIdx.x;
-	if (0 < my_tid && my_tid < N){
+	if (my_tid < N){
 		int j;
 		double my_k = pow[my_tid];
 	        for (j = 0; j < N; j++)

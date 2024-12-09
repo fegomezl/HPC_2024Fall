@@ -20,16 +20,16 @@ int main(int argc, char* argv[]){
 	double* localArrayC;
 	double* outputArrayC;
 
+	// Start MPI code
+	MPI_Init(&argc, &argv);
+	MPI_Comm_rank(MPI_COMM_WORLD, &pid);
+	MPI_Comm_size(MPI_COMM_WORLD, &nproc);
+
 	// Allocate variables
 	inputArrayA = (double*)malloc(N*N*sizeof(double));
 	inputArrayB = (double*)malloc(N*N*sizeof(double));
 	localArrayC = (double*)malloc(N*N*sizeof(double));
 	outputArrayC = (double*)malloc(N*N*sizeof(double));
-
-	// Start MPI code
-	MPI_Init(&argc, &argv);
-	MPI_Comm_rank(MPI_COMM_WORLD, &pid);
-	MPI_Comm_size(MPI_COMM_WORLD, &nproc);
 
 	// Initialize variables
 	first_index = partition_index(N*N, pid, nproc);
@@ -55,7 +55,7 @@ int main(int argc, char* argv[]){
 			localArrayC[n] += inputArrayA[i*N+k]*inputArrayB[k*N+j];
 	}
 	// Accumulate sum in master processor
-	MPI_Reduce(localArrayC, outputArrayC, N*N, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+	MPI_Reduce(localArrayC, outputArrayC, N*N, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
 	// Get the end time
 	local_end = MPI_Wtime();

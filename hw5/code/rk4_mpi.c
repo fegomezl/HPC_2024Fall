@@ -4,7 +4,7 @@
 #include <mpi.h> 
 
 // System size
-#define		N	256
+#define		N	4096
 
 // Find first index of pid for a load-balanced partition of N items
 int partition_index(long size, long pid, long nproc);

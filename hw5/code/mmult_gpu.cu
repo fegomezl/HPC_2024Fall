@@ -16,7 +16,7 @@ __global__ void CUDA_mmult(const double inputArrayA[], const double inputArrayB[
 	int my_tid = blockDim.x*blockIdx.x + threadIdx.x;
 	int i = my_tid/N;
 	int j = my_tid%N;
-	if (0 < my_tid && my_tid < N*N){
+	if (my_tid < N*N){
 		int k;
 		double my_C = 0.0;
 		for (k = 0; k < N; k++)

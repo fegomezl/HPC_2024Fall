@@ -9,11 +9,11 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --time=2:00:00
 #SBATCH --qos=short
-#SBATCH --output=results/rk4-256_%A.txt
+#SBATCH --output=results/rk4-4096_%A.txt
 
 make rk4
 
-for i in $(seq 1 10);
+for i in $(seq 1 30);
 do
     ./rk4.x cluster
 done

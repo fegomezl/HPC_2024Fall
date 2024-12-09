@@ -9,11 +9,11 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --time=2:00:00
 #SBATCH --qos=short
-#SBATCH --output=results/mmult-256_%A.txt
+#SBATCH --output=results/mmult-1024_%A.txt
 
 make mmult
 
-for i in $(seq 1 1);
+for i in $(seq 1 10);
 do
-    ./mmult.x
+    ./mmult.x cluster
 done

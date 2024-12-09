@@ -8,13 +8,13 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --time=2:00:00
 #SBATCH --qos=short
-#SBATCH --output=results/rk4_gpu-256_%A.txt
+#SBATCH --output=results/rk4_gpu-4096_%A.txt
 
 module load cuda/11.0
 
 make rk4_gpu
 
-for i in $(seq 1 10);
+for i in $(seq 1 30);
 do
     ./rk4_gpu.x cluster
 done

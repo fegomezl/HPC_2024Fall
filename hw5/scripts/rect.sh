@@ -9,11 +9,11 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --time=2:00:00
 #SBATCH --qos=short
-#SBATCH --output=results/rect-256_%A.txt
+#SBATCH --output=results/rect-1048576_%A.txt
 
 make rect
 
-for i in $(seq 1 10);
+for i in $(seq 1 30);
 do
     ./rect.x cluster
 done

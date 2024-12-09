@@ -8,13 +8,13 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --time=2:00:00
 #SBATCH --qos=short
-#SBATCH --output=results/rect_gpu-256_%A.txt
+#SBATCH --output=results/rect_gpu-1048576_%A.txt
 
 module load cuda/11.0
 
 make rect_gpu
 
-for i in $(seq 1 10);
+for i in $(seq 1 30);
 do
     ./rect_gpu.x cluster
 done

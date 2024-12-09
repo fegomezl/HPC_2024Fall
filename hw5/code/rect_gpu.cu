@@ -5,7 +5,7 @@
 #include <cuda.h>
 
 // System size
-#define		N	256
+#define		N	1048576
 
 // Structures for profilling
 struct timeval startTime;
@@ -15,8 +15,8 @@ double timeIntervalLength;
 // Each thread sums its contribution to the global sum
 __global__ void CUDA_rect(const double h, double* area){
 	int my_tid = blockDim.x*blockIdx.x + threadIdx.x;
-	if (0 < my_tid && my_tid < N)
-		atomicAdd(area, cos(my_tid*h)*h);
+	if (my_tid < N)
+		atomicAdd(area, cos(my_tid*h));
 }
 
 int main(int argc, char* argv[]){

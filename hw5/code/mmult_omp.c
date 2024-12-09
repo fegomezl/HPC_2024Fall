@@ -40,7 +40,6 @@ int main(int argc, char* argv[]){
 	// Get the start time
 	gettimeofday(&startTime, NULL);
 
-
 	// Divide rows and columns of resulting matrix among threads
 	#pragma omp parallel for num_threads(nproc) shared(inputArrayA, inputArrayB, outputArrayC) private(n, i, j, k)
 	for (n = 0; n < N*N; n++){

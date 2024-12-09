@@ -5,7 +5,7 @@
 #include <omp.h>
 
 // System size
-#define		N	256
+#define		N	16384
 
 // Structures for profilling
 struct timeval startTime;
@@ -115,7 +115,7 @@ int main(int argc, char* argv[]){
 	if (argc < 2){
 		printf("Interval length: %g msec.\n", timeIntervalLength);
 	} else { 
-		printf("%g\n", timeIntervalLength);
+	    	printf("%d\t%g\n", nproc, timeIntervalLength);
 	}
 	
 	return 0;
